@@ -1,0 +1,14 @@
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\bin\Debug\Graphical Programming Language.exe.config
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\bin\Debug\Graphical Programming Language.exe
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\bin\Debug\Graphical Programming Language.pdb
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.AssemblyReference.cache
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.CoreCompileInputs.cache
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.exe
+C:\Users\Pires\source\repos\Graphical Programming Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.pdb
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\bin\Debug\Graphical Programming Language.exe.config
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\bin\Debug\Graphical Programming Language.exe
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\bin\Debug\Graphical Programming Language.pdb
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.AssemblyReference.cache
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.CoreCompileInputs.cache
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.exe
+C:\Users\Pires\source\repos\Graphical_Programming_Language\Graphical Programming Language\obj\Debug\Graphical Programming Language.pdb
