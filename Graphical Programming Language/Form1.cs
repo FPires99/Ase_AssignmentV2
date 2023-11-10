@@ -51,6 +51,11 @@ namespace Graphical_Programming_Language
                 case "moveto":
                     MoveToCommand(parser);
                     break;
+
+                case "run":
+                    ExecuteMultiLineCommands(textBox2.Text);
+                    textBox2.Clear();
+                    break;
             }
         }
         /// <summary>
@@ -75,6 +80,39 @@ namespace Graphical_Programming_Language
                 {
                     MessageBox.Show($"Error: {ex.Message}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// This methods reads muiltiple commands.
+        /// </summary>
+        /// <param name="inputCommands">This is the string that contains the commands</param>
+        ///<remarks>
+        ///This methods splits the string inputCommands into indiviual commands then executes parsed command using the ExecuteCommand method.
+        ///<remarks>
+        public void ExecuteMultiLineCommands(string inputCommands)
+        {
+            if (string.IsNullOrWhiteSpace(inputCommands))
+            {
+                MessageBox.Show("You need to insert commands.");
+            }
+            else
+            {
+                string[] commandLines = inputCommands.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string commandLine in commandLines)
+                {
+                    try
+                    {
+                        CommandParser parser = new CommandParser(commandLine.Trim());
+                        ExecuteCommand(parser);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
+                }
+                textBox2.Clear();
             }
         }
         /// <summary>
@@ -104,6 +142,11 @@ namespace Graphical_Programming_Language
         private void RunButton2_Click(object sender, EventArgs e)
         {
             ExecuteSingleLine(textBox1.Text.Trim());
+        }
+
+        private void RunButton1_Click(object sender, EventArgs e)
+        {
+            ExecuteMultiLineCommands(textBox2.Text.Trim());
         }
     }
 }

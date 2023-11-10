@@ -28,7 +28,7 @@ namespace ProjectTests
         }
 
         /// <summary>
-        /// Tests SingleLineCommands by using moveto command and checking positions.
+        /// Tests execute single line by using a valid command and then checking position of the coordinates.
         /// </summary>
         [TestMethod]
         public void SingleLineCommands()
@@ -39,14 +39,31 @@ namespace ProjectTests
             int initialY = instance.centerY;
             string validCommand = "moveto 50 50";
 
-
             instance.ExecuteSingleLine(validCommand);
-
 
             Assert.AreEqual(50, instance.centerX);
             Assert.AreEqual(50, instance.centerY);
             Assert.AreNotEqual(initialX, instance.centerX);
             Assert.AreNotEqual(initialY, instance.centerY);
+
+        }
+
+        /// <summary>
+        /// This method check multilinecommands by using moveto commands and cheking their position in the end.
+        /// </summary>
+        [TestMethod]
+        public void MultiLineCommands_ExecuteCommands()
+        {
+
+            Form1 instance = new Form1();
+            string validCommands = "moveto 50 50\nmoveto 100 100\nclear";
+            instance.ExecuteMultiLineCommands(validCommands);
+
+            Assert.AreEqual(100, instance.centerX);
+            Assert.AreEqual(100, instance.centerY);
+
+            Assert.AreNotEqual(50, instance.centerX);
+            Assert.AreNotEqual(50, instance.centerY);
 
         }
     }
