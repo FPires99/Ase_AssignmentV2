@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphical Programming Language", "Graphical Programming Language\Graphical Programming Language.csproj", "{4E9D396D-194E-4E39-BE40-94B121AF6AD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTests", "ProjectTests\ProjectTests.csproj", "{D7737D59-5630-4D07-928A-0E45D8FDA242}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4E9D396D-194E-4E39-BE40-94B121AF6AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E9D396D-194E-4E39-BE40-94B121AF6AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E9D396D-194E-4E39-BE40-94B121AF6AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7737D59-5630-4D07-928A-0E45D8FDA242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7737D59-5630-4D07-928A-0E45D8FDA242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7737D59-5630-4D07-928A-0E45D8FDA242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7737D59-5630-4D07-928A-0E45D8FDA242}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

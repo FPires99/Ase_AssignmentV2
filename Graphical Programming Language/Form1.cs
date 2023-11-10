@@ -81,13 +81,13 @@ namespace Graphical_Programming_Language
         /// This code is responsible for the moveto command by updative the coordinates.
         /// </summary>
         /// <param name="parser">This will process the command splitting from the parameters and checking.</param>
-        private void MoveToCommand(CommandParser parser)
+        public void MoveToCommand(CommandParser parser)
         {
             if (parser.Parameters.Count == 2 &&
                 int.TryParse(parser.Parameters[0], out int x) &&
                 int.TryParse(parser.Parameters[1], out int y))
             {
-                
+
                 centerX = x;
                 centerY = y;
 
