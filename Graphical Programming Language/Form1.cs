@@ -1,6 +1,8 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +10,11 @@ using System.Windows.Forms;
 
 namespace Graphical_Programming_Language
 {
-    internal class Program
+    public partial class Form1 : Form
     {
-        [STAThread]
-        static void Main(string[] args)
+        public Form1()
         {
-
-            Form1 c = new Form1();
-            c.ShowDialog();
+            InitializeComponent();
         }
     }
 }
