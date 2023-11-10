@@ -107,5 +107,47 @@ namespace ProjectTests
 
             Assert.IsTrue(result);
         }
+        /// <summary>
+        /// This Unit Test test the Paser Input with a valid command with valid parameters
+        /// </summary>
+        [TestMethod]
+        public void ParseInput()
+        {
+            string input = "moveto 100 100";
+            CommandParser instance = new CommandParser(input);
+
+            Assert.AreEqual("moveto", instance.CommandName);
+
+            System.Diagnostics.Debug.WriteLine($"Actual Parameters Count: {instance.Parameters.Count}");
+
+            CollectionAssert.AreEquivalent(new[] { "100", "100" }, instance.Parameters);
+        }
+        /// <summary>
+        /// This unit tests checks if the command is valid.
+        /// </summary>
+        [TestMethod]
+        public void ValidCommands()
+        {
+
+            var parser = new CommandParser("moveto 100 100");
+            Assert.IsTrue(parser.IsValidCommand("moveto"));
+            Assert.IsFalse(parser.IsValidCommand("hello"));
+        }
+        /// <summary>
+        /// This Unit Test checks if the parameters are valid
+        /// </summary>
+        [TestMethod]
+        public void IsValidParameter()
+        {
+            var parser = new CommandParser("moveto 100 100");
+
+
+            Assert.IsTrue(parser.IsValidParameter("123"));
+            Assert.IsTrue(parser.IsValidParameter("0"));
+            Assert.IsFalse(parser.IsValidParameter("aaa"));
+            Assert.IsTrue(parser.IsValidParameter("blue"));
+        }
+
+
     }
 }

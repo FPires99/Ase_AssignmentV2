@@ -13,7 +13,11 @@ namespace Graphical_Programming_Language
             Parameters = new List<string>();
             ParseInput(input);
         }
-
+        /// <summary>
+        /// This command proceses the input string to obtain command name and parameters
+        /// </summary>
+        /// <param name="input">Input string to be used</param>
+        /// <exception cref="ArgumentException">Throws when command is not provided</exception>
         public void ParseInput(string input)
         {
             string[] words = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -29,10 +33,14 @@ namespace Graphical_Programming_Language
             {
                 Parameters.Add(words[i]);
             }
-
+            // Validates the parsed command and param.
             ValidateCommandAndParameters();
         }
-
+        /// <summary>
+        /// This method combines isvalidcommand method and isvalidparamter method and throws arguments
+        /// if the command or parameters are valid.
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public void ValidateCommandAndParameters()
         {
             if (!IsValidCommand(CommandName))
@@ -49,14 +57,22 @@ namespace Graphical_Programming_Language
             }
         }
 
-        // Method to check for valid commands .
+        /// <summary>
+        /// This methods have included all the commands available for this program
+        /// </summary>
+        /// <param name="command">Commands available</param>
+        /// <returns></returns>
         public bool IsValidCommand(string command)
         {
             return command == "moveto" || command == "run" || command =="drawto" || command == "clear"
                 || command == "reset" || command == "circle" || command == "triangle" || command =="fill" || command == "rectangle" || command == "pen";
         }
 
-        // Method to check for valid parameters.
+        /// <summary>
+        /// This method checks for valid parameters only allows ints and 3 colours.
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public bool IsValidParameter(string parameter)
         {
             int result;
