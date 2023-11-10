@@ -82,6 +82,7 @@
             this.RunButton2.TabIndex = 4;
             this.RunButton2.Text = "Run";
             this.RunButton2.UseVisualStyleBackColor = true;
+            this.RunButton2.Click += new System.EventHandler(this.RunButton2_Click);
             // 
             // textBox2
             // 
