@@ -26,5 +26,28 @@ namespace ProjectTests
             Assert.AreEqual(20, instance.centerY);
             
         }
+
+        /// <summary>
+        /// Tests SingleLineCommands by using moveto command and checking positions.
+        /// </summary>
+        [TestMethod]
+        public void SingleLineCommands()
+        {
+
+            Form1 instance = new Form1();
+            int initialX = instance.centerX;
+            int initialY = instance.centerY;
+            string validCommand = "moveto 50 50";
+
+
+            instance.ExecuteSingleLine(validCommand);
+
+
+            Assert.AreEqual(50, instance.centerX);
+            Assert.AreEqual(50, instance.centerY);
+            Assert.AreNotEqual(initialX, instance.centerX);
+            Assert.AreNotEqual(initialY, instance.centerY);
+
+        }
     }
 }
