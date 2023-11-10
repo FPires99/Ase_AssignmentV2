@@ -86,9 +86,12 @@ namespace Graphical_Programming_Language
         /// <summary>
         /// This methods reads muiltiple commands.
         /// </summary>
-        /// <param name="inputCommands">This is the string that contains the commands</param>
+        /// <param name="inputCommands">This is the string that contains the command</param>
         ///<remarks>
-        ///This methods splits the string inputCommands into indiviual commands then executes parsed command using the ExecuteCommand method.
+        ///This method separates the command and the parameters stored in  the string 
+        ///inputCommands then executes parsed command 
+        ///to process the command including a while loop to go 
+        ///over all the commands inputted.
         ///<remarks>
         public void ExecuteMultiLineCommands(string inputCommands)
         {
@@ -147,6 +150,38 @@ namespace Graphical_Programming_Language
         private void RunButton1_Click(object sender, EventArgs e)
         {
             ExecuteMultiLineCommands(textBox2.Text.Trim());
+        }
+
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+
+                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    string selectedFilePath = openFileDialog.FileName;
+
+                    commands.LoadTextToFile(textBox2, selectedFilePath);
+                }
+            }
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            string textToSave = textBox2.Text;
+
+            if (commands.SaveTextToFile(textToSave))
+            {
+                MessageBox.Show("Text saved to file successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Failed to save text to the file.");
+            }
         }
     }
 }

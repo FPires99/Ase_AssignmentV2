@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using Graphical_Programming_Language;
+using System.Windows.Forms;
 
 namespace ProjectTests
 {
@@ -49,10 +50,10 @@ namespace ProjectTests
         }
 
         /// <summary>
-        /// This method check multilinecommands by using moveto commands and cheking their position in the end.
+        /// This method tests the multi line commands method by using moveto commands and cheking their position in the end.
         /// </summary>
         [TestMethod]
-        public void MultiLineCommands_ExecuteCommands()
+        public void MultiLineCommands()
         {
 
             Form1 instance = new Form1();
@@ -65,6 +66,46 @@ namespace ProjectTests
             Assert.AreNotEqual(50, instance.centerX);
             Assert.AreNotEqual(50, instance.centerY);
 
+        }
+
+        /// <summary>
+        /// This test created a temporary file with some text then checks the text inside the file.
+        /// </summary>
+        [TestMethod]
+        public void LoadTextToFile()
+        {
+            var textBox = new TextBox();
+            var command = new Commands();
+
+            // Create a temporary text file for testing
+            string tempFilePath = Path.GetTempFileName();
+            File.WriteAllText(tempFilePath, "Test Text");
+
+
+            command.LoadTextToFile(textBox, tempFilePath);
+
+
+            string loadedText = textBox.Text;
+            Assert.AreEqual("Test Text", loadedText);
+
+
+            File.Delete(tempFilePath);
+        }
+
+        /// <summary>
+        /// This unit test is saving text into a file and return if it saved.
+        /// </summary>
+        [TestMethod]
+        public void SaveTextToFile()
+        {
+
+            var commands = new Commands();
+            string textToSave = "Test text to save.";
+
+
+            bool result = commands.SaveTextToFile(textToSave);
+
+            Assert.IsTrue(result);
         }
     }
 }
