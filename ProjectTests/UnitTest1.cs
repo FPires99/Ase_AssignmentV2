@@ -3,6 +3,10 @@ using System;
 using System.IO;
 using Graphical_Programming_Language;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+
+
 
 namespace ProjectTests
 {
@@ -27,6 +31,30 @@ namespace ProjectTests
             Assert.AreEqual(20, instance.centerY);
             
         }
+
+        /// <summary>
+        /// Tests the drawto method. It check if method updates coordinates x and Y.
+        /// </summary>
+        [TestMethod]
+        public void DrawTo()
+        {
+            string validCommand = "drawto 100 200";
+            CommandParser parser = new CommandParser(validCommand);
+            Form1 form = new Form1();
+
+            // Remember the initial values
+            int initialCenterX = form.centerX;
+            int initialCenterY = form.centerY;
+            GraphicsPath initialPath = form.path;
+
+            form.DrawTo(parser);
+
+            // Verify that centerX and centerY were updated correctly
+            Assert.AreEqual(100, form.centerX);
+            Assert.AreEqual(200, form.centerY);
+        }
+
+
 
         /// <summary>
         /// Tests execute single line by using a valid command and then checking position of the coordinates.
@@ -108,7 +136,7 @@ namespace ProjectTests
             Assert.IsTrue(result);
         }
         /// <summary>
-        /// This Unit Test test the Paser Input with a valid command with valid parameters
+        /// This Unit Test test the Parser Input with a valid command with valid parameters
         /// </summary>
         [TestMethod]
         public void ParseInput()

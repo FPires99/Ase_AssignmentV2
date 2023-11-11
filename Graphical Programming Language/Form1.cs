@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,7 @@ namespace Graphical_Programming_Language
         public Color dotColor = Color.Red;
         private Brush dotBrush;
         private Commands commands;
+        public GraphicsPath path = new GraphicsPath();
 
         public Form1()
         {
@@ -38,6 +41,11 @@ namespace Graphical_Programming_Language
                 // Draw the dot on the panel at the current position
                 g.FillEllipse(dotBrush, centerX - dotSize / 2, centerY - dotSize / 2, dotSize, dotSize);
 
+                // Draw the path on the graphics object
+                using (Pen linePen = new Pen(Color.Black, 2))
+                {
+                    g.DrawPath(linePen, path);
+                }
             }
         }
         /// <summary>
@@ -55,6 +63,10 @@ namespace Graphical_Programming_Language
                 case "run":
                     ExecuteMultiLineCommands(textBox2.Text);
                     textBox2.Clear();
+                    break;
+
+                case "drawto":
+                    DrawTo(parser);
                     break;
             }
         }
@@ -139,6 +151,31 @@ namespace Graphical_Programming_Language
             else
             {
                 MessageBox.Show("Invalid 'moveto' command format. Please use 'moveto x y'.");
+            }
+        }
+        /// <summary>
+        /// This command allows the user to draw a line from the current position to a specific point
+        /// </summary>
+        /// <param name="parser">This method is using parser class to process the command  and do the checks.</param>
+        public void DrawTo(CommandParser parser)
+        {
+            if (parser.Parameters.Count == 2 &&
+                int.TryParse(parser.Parameters[0], out int xValue) &&
+                int.TryParse(parser.Parameters[1], out int yValue))
+            {
+                // Add a line segment to the path
+                path.AddLine(centerX, centerY, xValue, yValue);
+
+                // Update the current position
+                centerX = xValue;
+                centerY = yValue;
+
+                // Redraw the panel to reflect the drawing
+                panel1.Invalidate();
+            }
+            else
+            {
+                MessageBox.Show("Invalid 'drawto' command format. Please use 'drawto x y'.");
             }
         }
 
