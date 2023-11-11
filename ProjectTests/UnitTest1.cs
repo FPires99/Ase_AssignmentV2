@@ -54,6 +54,25 @@ namespace ProjectTests
             Assert.AreEqual(200, form.centerY);
         }
 
+        /// <summary>
+        /// This test writes a line inside a empty form so we could use clearCommand to check if it clears.
+        /// </summary>
+        [TestMethod]
+        public void TestClearCommand()
+        {
+            Form1 form = new Form1();
+
+            form.path.AddLine(new Point(10, 10), new Point(20, 20));
+            form.clearCommand();
+
+
+            // Verify that the GraphicsPath is empty after using clear command.
+            Assert.AreEqual(0, form.path.PointCount);
+
+
+        }
+
+
 
 
         /// <summary>

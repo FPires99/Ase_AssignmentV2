@@ -68,6 +68,10 @@ namespace Graphical_Programming_Language
                 case "drawto":
                     DrawTo(parser);
                     break;
+
+                case "clear":
+                    clearCommand();
+                    break;
             }
         }
         /// <summary>
@@ -177,6 +181,15 @@ namespace Graphical_Programming_Language
             {
                 MessageBox.Show("Invalid 'drawto' command format. Please use 'drawto x y'.");
             }
+        }
+
+        /// <summary>
+        /// This command clears the drawing.
+        /// </summary>
+        public void clearCommand()
+        {
+            path.Reset();
+            panel1.Invalidate();
         }
 
         private void RunButton2_Click(object sender, EventArgs e)
