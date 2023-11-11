@@ -72,6 +72,10 @@ namespace Graphical_Programming_Language
                 case "clear":
                     clearCommand();
                     break;
+
+                case "reset":
+                    ResetPen();
+                    break;
             }
         }
         /// <summary>
@@ -189,6 +193,16 @@ namespace Graphical_Programming_Language
         public void clearCommand()
         {
             path.Reset();
+            panel1.Invalidate();
+        }
+
+        /// <summary>
+        /// This command resets pen to initial position.
+        /// </summary>
+        public void ResetPen()
+        {
+            centerX = 10;
+            centerY = 10;
             panel1.Invalidate();
         }
 

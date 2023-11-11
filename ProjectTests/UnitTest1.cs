@@ -72,6 +72,22 @@ namespace ProjectTests
 
         }
 
+        /// <summary>
+        /// This test uses the command moveto to move the red dot to another position then resets the position and checks for current position
+        /// </summary>
+        [TestMethod]
+        public void TestResetPen()
+        {
+            Form1 form = new Form1();
+            form.ExecuteCommand(new CommandParser("moveto 100 100"));
+
+            form.ResetPen();
+
+            Assert.AreEqual(10, form.centerX);
+            Assert.AreEqual(10, form.centerY);
+
+        }
+
 
 
 
