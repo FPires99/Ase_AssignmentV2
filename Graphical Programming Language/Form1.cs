@@ -138,6 +138,18 @@ namespace Graphical_Programming_Language
                     }
                     break;
 
+                case "pen":
+                    if (parser.Parameters.Count == 1)
+                    {
+                        string colorString = parser.Parameters[0];
+                        dotColor = commands.SetPenColor(colorString);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid 'pen' command format. Please use 'pen color', where color is the desired pen color.");
+                    }
+                    break;
+
                 case "fill":
                     if (parser.Parameters.Count == 1 && int.TryParse(parser.Parameters[0], out int fillOption))
                     {

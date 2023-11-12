@@ -159,6 +159,25 @@ namespace ProjectTests
 
             }
         }
+        /// <summary>
+        /// This test is testing command setpencolour to ensure it returns the correct color .
+        /// </summary>
+        [TestMethod]
+        public void SetPenColor()
+        {
+            
+            Commands command = new Commands(); 
+
+            Color result = command.SetPenColor("blue");
+            Color result1 = command.SetPenColor("red");
+            Color result2 = command.SetPenColor("green");
+
+
+            Assert.AreEqual(Color.Blue, result);
+            Assert.AreEqual(Color.Red, result1);
+            Assert.AreEqual(Color.Green, result2);
+
+        }
 
 
         /// <summary>

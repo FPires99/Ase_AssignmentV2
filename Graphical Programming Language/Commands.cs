@@ -67,6 +67,38 @@ namespace Graphical_Programming_Language
             }
         }
 
+        /// <summary>
+        /// This method sets the pen colour on the colour specified at color string.
+        /// </summary>
+        /// <param name="colorString">The color string specifying the desired pen colour</param>
+        /// <returns></returns>
+        public Color SetPenColor(string colorString)
+        {
+            Color newColor;
+
+            switch (colorString.ToLower())
+            {
+                case "blue":
+                    newColor = Color.Blue;
+                    MessageBox.Show("Pen color set to blue.");
+                    break;
+                case "red":
+                    newColor = Color.Red;
+                    MessageBox.Show("Pen color set to red.");
+                    break;
+                case "green":
+                    newColor = Color.Green;
+                    MessageBox.Show("Pen color set to green.");
+                    break;
+                default:
+                    MessageBox.Show($"Invalid color '{colorString}' for the 'pen' command. Supported colors are 'blue', 'red', and 'green'.");
+                    newColor = Color.Red; // Default to red in case of an error
+                    break;
+            }
+
+            return newColor;
+        }
+
 
 
     }
