@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="rectangle.cs" />
     <Compile Include="shape.cs" />
+    <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

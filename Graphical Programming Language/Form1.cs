@@ -24,6 +24,7 @@ namespace Graphical_Programming_Language
         private bool fillEnabled = false;
         public List<Rectangle> rectangles = new List<Rectangle>();
         private List<Circle> circles = new List<Circle>();
+        private List<Triangle> triangles = new List<Triangle>();
 
         public Form1()
         {
@@ -57,6 +58,10 @@ namespace Graphical_Programming_Language
                 foreach (Circle circle in circles)
                 {
                     circle.draw(g);
+                }
+                foreach (Triangle triangle in triangles)
+                {
+                    triangle.draw(g);
                 }
             }
         }
@@ -116,6 +121,20 @@ namespace Graphical_Programming_Language
                     else
                     {
                         MessageBox.Show("Invalid 'circle' command format. Please use 'circle radius'.");
+                    }
+                    break;
+
+                case "triangle":
+                    if (parser.Parameters.Count == 1 && int.TryParse(parser.Parameters[0], out int sideLength))
+                    {
+                        Triangle triangle = new Triangle(dotColor, centerX, centerY, sideLength, fillEnabled);
+                        triangles.Add(triangle);
+                        triangle.draw(panel1.CreateGraphics());
+                        textBox1.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid 'triangle' command format. Please use 'triangle sideLength'.");
                     }
                     break;
 

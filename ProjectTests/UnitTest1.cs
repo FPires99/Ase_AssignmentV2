@@ -136,7 +136,29 @@ namespace ProjectTests
                
             }
         }
+        /// <summary>
+        /// This test draws a triangle then checks for side lenght.
+        /// </summary>
+        [TestMethod]
+        public void Draw_Triangle()
+        {
+            int x = 100;
+            int y = 100;
+            int sideLength = 50;
 
+            Triangle triangle = new Triangle(Color.Green, x, y, sideLength, fillEnabled: true);
+
+            using (Bitmap bmp = new Bitmap(200, 200))
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                triangle.draw(g);
+
+                //Checks the size of the drawn triangle
+                Assert.AreEqual(sideLength, triangle.sideLength);
+                Assert.AreEqual(sideLength, triangle.sideLength);
+
+            }
+        }
 
 
         /// <summary>
