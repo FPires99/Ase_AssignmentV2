@@ -21,6 +21,8 @@ namespace Graphical_Programming_Language
         private Brush dotBrush;
         private Commands commands;
         public GraphicsPath path = new GraphicsPath();
+        private bool fillEnabled = false;
+        public List<Rectangle> rectangles = new List<Rectangle>();
 
         public Form1()
         {
@@ -31,7 +33,7 @@ namespace Graphical_Programming_Language
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        public void panel1_Paint(object sender, PaintEventArgs e)
         {
             using (Graphics g = e.Graphics)
             {
@@ -45,6 +47,11 @@ namespace Graphical_Programming_Language
                 using (Pen linePen = new Pen(Color.Black, 2))
                 {
                     g.DrawPath(linePen, path);
+                }
+
+                foreach (Rectangle rectangle in rectangles)
+                {
+                    rectangle.draw(g);
                 }
             }
         }
@@ -76,6 +83,44 @@ namespace Graphical_Programming_Language
                 case "reset":
                     ResetPen();
                     break;
+
+                case "rectangle":
+                    if (parser.Parameters.Count == 2 &&
+                    int.TryParse(parser.Parameters[0], out int width) &&
+                    int.TryParse(parser.Parameters[1], out int height))
+                    {
+                        Rectangle rectangle = new Rectangle(dotColor, centerX, centerY, width, height, fillEnabled);
+                        rectangles.Add(rectangle);
+                        rectangle.draw(panel1.CreateGraphics());
+                        textBox1.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid 'rectangle' command format. Please use 'rectangle width height'.");
+                    }
+                    break;
+
+                case "fill":
+                    if (parser.Parameters.Count == 1 && int.TryParse(parser.Parameters[0], out int fillOption))
+                    {
+                        switch (fillOption)
+                        {
+                            case 1:
+                                fillEnabled = true;
+                                break;
+                            case 2:
+                                fillEnabled = false;
+                                break;
+                            default:
+                                MessageBox.Show("Invalid 'fill' command option. Please use 'fill 1' for fill on or 'fill 2' for fill off.");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid 'fill' command format. Please use 'fill 1' for fill on or 'fill 2' for fill off.");
+                    }
+                    break;
             }
         }
         /// <summary>
@@ -95,6 +140,8 @@ namespace Graphical_Programming_Language
                     CommandParser parser = new CommandParser(command);
                     ExecuteCommand(parser);
                     textBox1.Clear();
+                    panel1.Invalidate();
+                    
                 }
                 catch (ArgumentException ex)
                 {

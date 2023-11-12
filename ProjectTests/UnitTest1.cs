@@ -87,7 +87,31 @@ namespace ProjectTests
             Assert.AreEqual(10, form.centerY);
 
         }
+        /// <summary>
+        /// Tests the size of a rectangle drawn.
+        /// </summary>
+        [TestMethod]
+        public void RectangleSize()
+        {
+            
+            int x = 100;
+            int y = 100;
+            int expectedWidth = 50;
+            int expectedHeight = 30;
 
+            Graphical_Programming_Language.Rectangle rectangle = new Graphical_Programming_Language.Rectangle(Color.Blue, x, y, expectedWidth, expectedHeight, fillEnabled: true);
+
+          
+            using (Bitmap bmp = new Bitmap(200, 200))
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                rectangle.draw(g);
+
+                // Assert: Check the size of the drawn rectangle
+                Assert.AreEqual(expectedWidth, rectangle.width);
+                Assert.AreEqual(expectedHeight, rectangle.height);
+            }
+        }
 
 
 

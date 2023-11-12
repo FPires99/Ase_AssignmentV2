@@ -63,6 +63,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="rectangle.cs" />
+    <Compile Include="shape.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
