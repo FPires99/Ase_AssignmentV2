@@ -23,6 +23,7 @@ namespace Graphical_Programming_Language
         public GraphicsPath path = new GraphicsPath();
         private bool fillEnabled = false;
         public List<Rectangle> rectangles = new List<Rectangle>();
+        private List<Circle> circles = new List<Circle>();
 
         public Form1()
         {
@@ -52,6 +53,10 @@ namespace Graphical_Programming_Language
                 foreach (Rectangle rectangle in rectangles)
                 {
                     rectangle.draw(g);
+                }
+                foreach (Circle circle in circles)
+                {
+                    circle.draw(g);
                 }
             }
         }
@@ -97,6 +102,20 @@ namespace Graphical_Programming_Language
                     else
                     {
                         MessageBox.Show("Invalid 'rectangle' command format. Please use 'rectangle width height'.");
+                    }
+                    break;
+
+                case "circle":
+                    if (parser.Parameters.Count == 1 && int.TryParse(parser.Parameters[0], out int radius))
+                    {
+                        Circle circle = new Circle(dotColor, centerX, centerY, radius, fillEnabled);
+                        circles.Add(circle);
+                        circle.draw(panel1.CreateGraphics());
+                        textBox1.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid 'circle' command format. Please use 'circle radius'.");
                     }
                     break;
 

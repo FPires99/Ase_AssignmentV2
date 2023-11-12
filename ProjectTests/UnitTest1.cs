@@ -112,6 +112,30 @@ namespace ProjectTests
                 Assert.AreEqual(expectedHeight, rectangle.height);
             }
         }
+        /// <summary>
+        /// This tests draws a circle then checks for his radius.
+        /// </summary>
+        [TestMethod]
+        public void Draw_Circle()
+        {
+            int x = 100;
+            int y = 100;
+            int radius = 30;
+
+            Circle circle = new Circle(Color.Blue, x, y, radius, fillEnabled: true);
+
+            using (Bitmap bmp = new Bitmap(200, 200))
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                circle.draw(g);
+
+                // Assert: Check the size of the drawn circle
+                Assert.AreEqual(radius * 2, circle.radius * 2);
+                Assert.AreEqual(radius * 2, circle.radius * 2);
+
+               
+            }
+        }
 
 
 
