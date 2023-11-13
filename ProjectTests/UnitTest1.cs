@@ -5,6 +5,7 @@ using Graphical_Programming_Language;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using Moq;
 
 
 
@@ -53,6 +54,7 @@ namespace ProjectTests
             Assert.AreEqual(100, form.centerX);
             Assert.AreEqual(200, form.centerY);
         }
+
 
         /// <summary>
         /// This test writes a line inside a empty form so we could use clearCommand to check if it clears.
@@ -155,9 +157,9 @@ namespace ProjectTests
 
                 //Checks the size of the drawn triangle
                 Assert.AreEqual(sideLength, triangle.sideLength);
-                Assert.AreEqual(sideLength, triangle.sideLength);
-
+         
             }
+
         }
         /// <summary>
         /// This test is testing command setpencolour to ensure it returns the correct color .
@@ -178,6 +180,9 @@ namespace ProjectTests
             Assert.AreEqual(Color.Green, result2);
 
         }
+
+
+
 
 
         /// <summary>
