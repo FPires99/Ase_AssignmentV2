@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Graphical_Programming_Language
 {
@@ -7,17 +8,15 @@ namespace Graphical_Programming_Language
     {
         public string CommandName { get; private set; }
         public List<string> Parameters { get; private set; }
+        public List<string> DeclaredVariables { get; private set; }
 
         public CommandParser(string input)
         {
             Parameters = new List<string>();
+            DeclaredVariables = new List<string>();
             ParseInput(input);
         }
-        /// <summary>
-        /// This command proceses the input string to obtain command name and parameters
-        /// </summary>
-        /// <param name="input">Input string to be used</param>
-        /// <exception cref="ArgumentException">Throws when command is not provided</exception>
+
         public void ParseInput(string input)
         {
             string[] words = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -27,61 +26,43 @@ namespace Graphical_Programming_Language
                 throw new ArgumentException("No command provided.");
             }
 
-            CommandName = words[0].ToLower(); // Convert to lowercase for case-insensitive command matching;
+            CommandName = words[0].ToLower();
 
             for (int i = 1; i < words.Length; i++)
             {
                 Parameters.Add(words[i]);
             }
-            // Validates the parsed command and param.
-            ValidateCommandAndParameters();
-        }
-        /// <summary>
-        /// This method combines isvalidcommand method and isvalidparamter method and throws arguments
-        /// if the command or parameters are valid.
-        /// </summary>
-        /// <exception cref="ArgumentException"></exception>
-        public void ValidateCommandAndParameters()
-        {
-            if (!IsValidCommand(CommandName))
-            {
-                throw new ArgumentException("Invalid command: " + CommandName);
-            }
 
-            foreach (string param in Parameters)
+            // Check for variable declaration
+            if (IsVariableDeclaration(out string variableName))
             {
-                if (!IsValidParameter(param))
+                if (DeclaredVariables.Contains(variableName))
                 {
-                    throw new ArgumentException("Invalid parameter: " + param);
+                    throw new ArgumentException($"Variable '{variableName}' is already declared.");
                 }
+
+                DeclaredVariables.Add(variableName);
             }
         }
 
-        /// <summary>
-        /// This methods have included all the commands available for this program
-        /// </summary>
-        /// <param name="command">Commands available</param>
-        /// <returns></returns>
-        public bool IsValidCommand(string command)
+        public bool IsVariableDeclaration(out string variableName)
         {
-            return command == "moveto" || command == "run" || command =="drawto" || command == "clear"
-                || command == "reset" || command == "circle" || command == "triangle" || command =="fill" || command == "rectangle" || command == "pen";
-        }
+            variableName = null;
 
-        /// <summary>
-        /// This method checks for valid parameters only allows ints and 3 colours.
-        /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        public bool IsValidParameter(string parameter)
-        {
-            int result;
-            if (int.TryParse(parameter, out result))
+            if (Parameters.Count >= 2 && Parameters[0].ToLower() == "var")
             {
-                return true;
+                variableName = Parameters[1];
+                return IsValidVariableName(variableName);
             }
-            string lowerParameter = parameter.ToLower();
-            return lowerParameter == "blue" || lowerParameter == "red" || lowerParameter == "green";
+
+            return false;
+        }
+
+
+        private bool IsValidVariableName(string variableName)
+        {
+            char firstChar = variableName.FirstOrDefault();
+            return char.IsLetter(firstChar);
         }
     }
 }

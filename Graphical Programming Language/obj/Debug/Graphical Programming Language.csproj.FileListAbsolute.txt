@@ -22,3 +22,13 @@ C:\Users\Pires\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\
 C:\Users\Pires\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.CoreCompileInputs.cache
 C:\Users\Pires\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.exe
 C:\Users\Pires\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.pdb
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\bin\Debug\Graphical Programming Language.exe.config
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\bin\Debug\Graphical Programming Language.exe
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\bin\Debug\Graphical Programming Language.pdb
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.AssemblyReference.cache
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical_Programming_Language.Form1.resources
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical_Programming_Language.Properties.Resources.resources
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.GenerateResource.cache
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.csproj.CoreCompileInputs.cache
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.exe
+C:\Users\Sonia Talhadas\source\repos\Ase_AssignmentV2\Graphical Programming Language\obj\Debug\Graphical Programming Language.pdb

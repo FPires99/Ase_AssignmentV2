@@ -16,6 +16,7 @@ namespace Graphical_Programming_Language
 
             Form1 c = new Form1();
             c.ShowDialog();
+            Console.ReadLine();
         }
     }
 }

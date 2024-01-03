@@ -25,6 +25,10 @@ namespace Graphical_Programming_Language
         public List<Rectangle> rectangles = new List<Rectangle>();
         private List<Circle> circles = new List<Circle>();
         private List<Triangle> triangles = new List<Triangle>();
+        private string[] variableNames = new string[100]; 
+        private int[] variableValues = new int[100]; 
+        private int variableCounter = 0;
+        private Dictionary<string, Circle> variableCircleMap = new Dictionary<string, Circle>();
 
         public Form1()
         {
@@ -71,8 +75,100 @@ namespace Graphical_Programming_Language
         /// <param name="parser">Processes the commands and the parameters</param>
         public void ExecuteCommand(CommandParser parser)
         {
+            MessageBox.Show($"Executing command: {parser.CommandName}");
+
             switch (parser.CommandName)
             {
+                case "var":
+                    if (parser.Parameters.Count == 1)
+                    {
+                        string variableName = parser.Parameters[0];
+                        int found = CheckVariable(variableName);
+                        if (found >= 0)
+                        {
+                            // Variable already declared, display the initial value
+                            MessageBox.Show($"Variable '{variableName}' already declared. Initial value: {variableValues[found]}");
+                        }
+                        else
+                        {
+                            variableNames[variableCounter] = variableName;
+                            variableValues[variableCounter] = 0;
+                            variableCounter++;
+
+                            // Display the correct initial value
+                            int indexOfX = CheckVariable(variableName);
+                            if (indexOfX >= 0)
+                            {
+                                MessageBox.Show($"Variable '{variableName}' declared with initial value: {variableValues[indexOfX]}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid 'var' command format. Please use 'var variableName'.");
+                    }
+                    break;
+
+                case "=":
+                    if (parser.Parameters.Count == 2)
+                    {
+                        string variableName = parser.Parameters[0];
+                        int found = CheckVariable(variableName);
+                        if (found >= 0)
+                        {
+                            string value = parser.Parameters[1];
+                            if (int.TryParse(value, out int intValue))
+                            {
+                                // Update the class-level array, not a local one
+                                variableValues[found] = intValue;
+
+                                // Display the updated value after assignment
+                                MessageBox.Show($"Variable '{variableName}' has updated value: {variableValues[found]}");
+                            }
+                            else if (IsVariable(value, out int variableValue))
+                            {
+                                // Update the class-level array, not a local one
+                                variableValues[found] = variableValue;
+
+                                // Display the updated value after assignment
+                                MessageBox.Show($"Variable '{variableName}' has updated value: {variableValues[found]}");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Syntax error: Invalid value for variable assignment.");
+                            }
+                        }
+                        else
+                        {
+                            // Variable not declared, try to declare it
+                            string value = parser.Parameters[1];
+                            if (IsVariable(value, out int variableValue))
+                            {
+                                variableNames[variableCounter] = variableName;
+                                // Update the class-level array, not a local one
+                                variableValues[variableCounter] = variableValue;
+                                MessageBox.Show($"Variable '{variableName}' declared and assigned the value: {variableValue}. Initial value: {variableValues[variableCounter]}");
+
+                                // Display the value after declaration
+                                MessageBox.Show($"Variable '{variableName}' has value: {variableValues[variableCounter]}");
+
+                                variableCounter++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Syntax error: Invalid value for variable assignment or undeclared variable.");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid '=' command format. Please use 'variableName = value'.");
+                    }
+                    break;
+
+
+
+
                 case "moveto":
                     MoveToCommand(parser);
                     break;
@@ -111,18 +207,48 @@ namespace Graphical_Programming_Language
                     break;
 
                 case "circle":
-                    if (parser.Parameters.Count == 1 && int.TryParse(parser.Parameters[0], out int radius))
+                    if (parser.Parameters.Count == 1)
                     {
-                        Circle circle = new Circle(dotColor, centerX, centerY, radius, fillEnabled);
-                        circles.Add(circle);
-                        circle.draw(panel1.CreateGraphics());
-                        textBox1.Clear();
+                        string parameter = parser.Parameters[0];
+                        int variableValue;
+
+                        // Check if it's a variable
+                        if (IsVariable(parameter, out variableValue))
+                        {
+                            // Display the variable value
+                            MessageBox.Show($"Variable '{parameter}' has value: {variableValue}");
+
+                            // Check if the variable is already associated with a Circle
+                            Circle existingCircle = circles.FirstOrDefault(c => c.VariableName == parameter);
+                            if (existingCircle != null)
+                            {
+                                existingCircle.SetRadius(variableValue);
+                                panel1.Invalidate(); // Redraw the panel to reflect the changes
+                                MessageBox.Show($"Circle with variable '{parameter}' found. Radius set to: {variableValue}");
+                            }
+                            else
+                            {
+                                // If not, create a new Circle and associate it with the variable
+                                Circle circle = new Circle(dotColor, centerX, centerY, variableValue, fillEnabled);
+                                circle.VariableName = parameter;
+                                circles.Add(circle);
+                                circle.draw(panel1.CreateGraphics());
+                                MessageBox.Show($"New Circle created with variable '{parameter}' and radius: {variableValue}");
+                            }
+
+                            textBox1.Clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid 'circle' command format. Please use 'circle radiusOrVariable'.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid 'circle' command format. Please use 'circle radius'.");
+                        MessageBox.Show("Invalid 'circle' command format. Please use 'circle radiusOrVariable'.");
                     }
                     break;
+
 
                 case "triangle":
                     if (parser.Parameters.Count == 1 && int.TryParse(parser.Parameters[0], out int sideLength))
@@ -173,6 +299,42 @@ namespace Graphical_Programming_Language
                     break;
             }
         }
+
+        private bool IsVariable(string paramName, out int variableValue)
+        {
+            // Try to parse the parameter as a literal value
+            if (int.TryParse(paramName, out variableValue))
+            {
+                Console.WriteLine($"Literal value '{paramName}' found with value: {variableValue}");
+                return true;
+            }
+
+            // Check if it's a variable
+            int variableIndex = CheckVariable(paramName);
+            if (variableIndex >= 0)
+            {
+                variableValue = variableValues[variableIndex];
+                Console.WriteLine($"Variable '{paramName}' found with value: {variableValue}");
+                return true;
+            }
+
+            // If it's neither a literal value nor a variable, return false
+            variableValue = 0; // Or another default value
+            Console.WriteLine($"Not a literal value or variable: {paramName}");
+            return false;
+        }
+        private int CheckVariable(string variableName)
+        {
+            for (int i = 0; i < variableCounter; i++)
+            {
+                if (variableNames[i] == variableName)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         /// <summary>
         /// Thi method executes single lines at textbox1
         /// </summary>
