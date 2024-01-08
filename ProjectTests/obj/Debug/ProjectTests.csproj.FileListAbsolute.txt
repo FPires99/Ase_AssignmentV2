@@ -24,10 +24,6 @@ C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\Castle.Core.
 C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\Moq.xml
 C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.AssemblyReference.cache
-C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.CoreCompileInputs.cache
-C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.dll
-C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.pdb
 C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -49,4 +45,8 @@ C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.T
 C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Moq.xml
 C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.AssemblyReference.cache
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.CoreCompileInputs.cache
 C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.CopyComplete
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.pdb

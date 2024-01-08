@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace Graphical_Programming_Language
 {
@@ -13,10 +14,17 @@ namespace Graphical_Programming_Language
         [STAThread]
         static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-            Form1 c = new Form1();
-            c.ShowDialog();
-            Console.ReadLine();
+            Form1 form1 = new Form1();
+            Form2 form2 = new Form2();
+
+            
+            form1.Show();
+            form2.Show();
+
+            Application.Run(); 
         }
     }
 }

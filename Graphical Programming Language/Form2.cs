@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +11,9 @@ using System.Windows.Forms;
 
 namespace Graphical_Programming_Language
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
+
         public int dotSize = 20;
         public int centerX = 10;
         public int centerY = 10;
@@ -31,21 +31,16 @@ namespace Graphical_Programming_Language
         public Dictionary<string, Circle> variableCircleMap = new Dictionary<string, Circle>();
         public bool isInsideLoop = false;
         public List<string> outputMessages = new List<string>();
-        
 
 
-
-
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             panel1.Invalidate();
             commands = new Commands();
-
-
         }
 
-    public void panel1_Paint(object sender, PaintEventArgs e)
+        public void panel1_Paint(object sender, PaintEventArgs e)
         {
             using (Graphics g = e.Graphics)
             {
@@ -75,8 +70,6 @@ namespace Graphical_Programming_Language
                 }
             }
         }
-
-
         /// <summary>
         /// This method is going to be responsible to execute all the commands in the program.
         /// </summary>
@@ -93,11 +86,11 @@ namespace Graphical_Programming_Language
                         break;
 
                     case "messagebox":
-                        
+
                         if (!isInsideLoop)
                         {
                             MessageBox.Show("Executing command messagebox");
-                            
+
                             ExecuteSingleLine("messagebox " + string.Join(" ", parser.Parameters));
                         }
                         break;
@@ -543,3 +536,5 @@ namespace Graphical_Programming_Language
         }
     }
 }
+
+ 
