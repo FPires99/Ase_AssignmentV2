@@ -11,29 +11,27 @@ namespace Graphical_Programming_Language
     public abstract class Shape
     {
 
-        protected Color colour; 
-        public int x, y; 
+        public Color colour;
+        public int x, y;
         public Shape(Color colour, int x, int y)
         {
 
-            this.colour = colour; 
-            this.x = x; 
-            this.y = y; 
-            
+            this.colour = colour;
+            this.x = x;
+            this.y = y;
+
         }
 
         public virtual void draw(Graphics g)
         {
-            
-          
+
+
             StringFormat drawFormat = new StringFormat();
             drawFormat.FormatFlags = StringFormatFlags.NoClip;
-            
+
         }
 
-       
+
 
     }
 }
-
-

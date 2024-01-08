@@ -7,7 +7,7 @@ namespace Graphical_Programming_Language
     {
         public int radius;
         protected bool fillEnabled;
-        public string VariableName { get; set; } // Add VariableName property
+        public string VariableName { get; set; } 
 
         public Circle(Color colour, int x, int y, int radius, bool fillEnabled) : base(colour, x, y)
         {

@@ -24,3 +24,29 @@ C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\Castle.Core.
 C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\Moq.xml
 C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Pires\source\repos\Ase_AssignmentV2\ProjectTests\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.AssemblyReference.cache
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.CoreCompileInputs.cache
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.pdb
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\ProjectTests.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\ProjectTests.pdb
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Castle.Core.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Graphical Programming Language.exe
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Moq.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Graphical Programming Language.pdb
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Graphical Programming Language.exe.config
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Castle.Core.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\Moq.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Pires\source\repos\ASE1\ProjectTests\obj\Debug\ProjectTests.csproj.CopyComplete

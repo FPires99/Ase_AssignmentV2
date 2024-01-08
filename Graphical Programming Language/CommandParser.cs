@@ -13,7 +13,7 @@ namespace Graphical_Programming_Language
         public CommandParser(string input)
         {
             Parameters = new List<string>();
-            DeclaredVariables = new List<string>();
+            /*DeclaredVariables = new List<string>();*/
             ParseInput(input);
         }
 
@@ -33,36 +33,7 @@ namespace Graphical_Programming_Language
                 Parameters.Add(words[i]);
             }
 
-            // Check for variable declaration
-            if (IsVariableDeclaration(out string variableName))
-            {
-                if (DeclaredVariables.Contains(variableName))
-                {
-                    throw new ArgumentException($"Variable '{variableName}' is already declared.");
-                }
 
-                DeclaredVariables.Add(variableName);
-            }
-        }
-
-        public bool IsVariableDeclaration(out string variableName)
-        {
-            variableName = null;
-
-            if (Parameters.Count >= 2 && Parameters[0].ToLower() == "var")
-            {
-                variableName = Parameters[1];
-                return IsValidVariableName(variableName);
-            }
-
-            return false;
-        }
-
-
-        private bool IsValidVariableName(string variableName)
-        {
-            char firstChar = variableName.FirstOrDefault();
-            return char.IsLetter(firstChar);
         }
     }
 }
