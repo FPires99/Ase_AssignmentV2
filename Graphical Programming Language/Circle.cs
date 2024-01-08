@@ -14,7 +14,7 @@ namespace Graphical_Programming_Language
             this.radius = radius;
             this.fillEnabled = fillEnabled;
 
-            Console.WriteLine($"Circle created with radius: {radius}");
+            /*Console.WriteLine($"Circle created with radius: {radius}");*/
         }
 
         public void SetRadius(int value)

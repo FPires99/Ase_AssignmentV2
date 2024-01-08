@@ -29,6 +29,9 @@ namespace Graphical_Programming_Language
         public int[] variableValues = new int[100];
         public int variableCounter = 0;
         public Dictionary<string, Circle> variableCircleMap = new Dictionary<string, Circle>();
+        public bool isInsideLoop = false;
+        public List<string> outputMessages = new List<string>();
+
 
 
         public Form1()
@@ -83,6 +86,20 @@ namespace Graphical_Programming_Language
             {
                 switch (parser.CommandName)
                 {
+                    case "while":
+                        ExecuteWhileLoop(parser);
+                        break;
+
+                    case "messagebox":
+                        
+                        if (!isInsideLoop)
+                        {
+                            MessageBox.Show("Executing command messagebox");
+                            
+                            ExecuteSingleLine("messagebox " + string.Join(" ", parser.Parameters));
+                        }
+                        break;
+
                     case "moveto":
                         MoveToCommand(parser);
                         break;
@@ -194,6 +211,48 @@ namespace Graphical_Programming_Language
                         }
                         break;
                 }
+            }
+        }
+        /// <summary>
+        /// Executes a while loop based on the provided command parser.
+        /// </summary>
+        /// <param name="parser">The command parser for the while loop parameters.</param>
+        /// This method checks if the while loop parameters are in the correct format (while variable < count).
+        /// If the condition is met, it executes the loops commands. The variable should be a valid numeric variable.
+        public void ExecuteWhileLoop(CommandParser parser)
+        {
+            if (parser.Parameters.Count == 3 &&
+                int.TryParse(parser.Parameters[2], out int loopCount))
+            {
+                string loopVariable = parser.Parameters[0];
+
+                // Check if the loop variable is a valid variable
+                if (IsVariable(loopVariable, out int variableValue))
+                {
+                    while (variableValue < loopCount)
+                    {
+                        // Output the message to the console
+                        string message = $"Executing command: messagebox \"Hello world\"";
+                        Console.WriteLine(message);
+
+                        // Store the message in the outputMessages list
+                        outputMessages.Add(message);
+
+                        // Update the loop variable value
+                        variableValue++;
+
+                        // Optionally, you can add a delay between iterations to visualize the loop
+                        System.Threading.Thread.Sleep(500);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Variable '{loopVariable}' not found or does not have a numeric value.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid 'while' command format. Please use 'while variable < count'.");
             }
         }
         /// <summary>
@@ -338,17 +397,26 @@ namespace Graphical_Programming_Language
 
                 foreach (string commandLine in commandLines)
                 {
+                    // Trim leading and trailing whitespaces
+                    string trimmedCommand = commandLine.Trim();
+
+                    // Skip empty lines
+                    if (string.IsNullOrEmpty(trimmedCommand))
+                    {
+                        continue;
+                    }
+
                     try
                     {
                         // Check if the command contains an equal sign (=), indicating a variable assignment
-                        if (commandLine.Contains("="))
+                        if (trimmedCommand.Contains("="))
                         {
-                            HandleVariableAssignment(commandLine.Trim());
+                            HandleVariableAssignment(trimmedCommand);
                         }
                         else
                         {
                             // If not a variable assignment, proceed with regular command execution
-                            CommandParser parser = new CommandParser(commandLine.Trim());
+                            CommandParser parser = new CommandParser(trimmedCommand);
                             ExecuteCommand(parser);
                             panel1.Invalidate();
                         }
